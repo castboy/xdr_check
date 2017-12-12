@@ -71,6 +71,7 @@ func main() {
 	partition := flag.Int("partition", 0, "partition")
 	start := flag.Int("offset", 0, "offset")
 	num := flag.Int("num", 1, "num")
+	flag.Parse()
 
 	InitBroker()
 	InitConsumer(*topic, int32(*partition), int64(*start))
