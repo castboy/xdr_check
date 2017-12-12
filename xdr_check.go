@@ -52,11 +52,6 @@ func main() {
 	offset := flag.Int("offset", 0, "offset")
 	size := flag.Int("size", 0, "size")
 	signature := flag.String("signature", "", "signature")
-	fmt.Println("stdin params below")
-	fmt.Printf("file: %s", *file)
-	fmt.Printf("offset: %d", *offset)
-	fmt.Printf("size: %d", *size)
-	fmt.Printf("signature: %s", *signature)
 	flag.Parse()
 
 	HdfsClient()
@@ -64,8 +59,10 @@ func main() {
 
 	ok := isRightFile(bytes, *signature)
 	if ok {
+		fmt.Printl("")
 		fmt.Println("right xdr")
 	} else {
+		fmt.Printl("")
 		fmt.Println("wrong xdr")
 	}
 
