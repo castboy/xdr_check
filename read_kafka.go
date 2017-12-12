@@ -58,7 +58,7 @@ func Consume(num int) {
 			log.Fatal("no data on kafka offset given")
 		}
 
-		fmt.Println(msg.Value)
+		fmt.Println(string(msg.Value))
 		fmt.Println("")
 
 		num--
