@@ -59,10 +59,10 @@ func main() {
 
 	ok := isRightFile(bytes, *signature)
 	if ok {
-		fmt.Printl("")
+		fmt.Println("")
 		fmt.Println("right xdr")
 	} else {
-		fmt.Printl("")
+		fmt.Println("")
 		fmt.Println("wrong xdr")
 	}
 
