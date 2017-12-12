@@ -26,7 +26,7 @@ func RdHdfs(file string, offset int64, size int64) []byte {
 	bytes := make([]byte, size)
 	_, err = f.ReadAt(bytes, offset)
 	if nil != err {
-		log.Fatalf("read hdfs %s from offset %d needSize %d, but only get %d", file, offset, size, f.Stat().Size())
+		fmt.Printf("read hdfs %s from offset %d needSize %d, but only get %d", file, offset, size, f.Stat().Size())
 	}
 
 	return bytes
@@ -53,10 +53,10 @@ func main() {
 	size := flag.Int("size", 0, "size")
 	signature := flag.String("signature", "", "signature")
 	fmt.Println("stdin params below")
-	fmt.Println("file:", *file)
-	fmt.Println("offset:", *offset)
-	fmt.Println("size:", *size)
-	fmt.Println("signature:", *signature)
+	fmt.Printf("file: %s", *file)
+	fmt.Printf("offset: %d", *offset)
+	fmt.Printf("size: %d", *size)
+	fmt.Printf("signature: %s", *signature)
 	flag.Parse()
 
 	HdfsClient()
