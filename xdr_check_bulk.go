@@ -64,7 +64,7 @@ func XdrCheckBulk(scanner *bufio.Scanner) {
 		obj.Output()
 		obj.Count()
 	}
-	fmt.Printf("valid: %d, invalid: %d", valid, invalid)
+	fmt.Printf("valid: %d, invalid: %d\n", valid, invalid)
 }
 
 func LogParameter() *string {
@@ -97,7 +97,7 @@ func (me *ReadHdfs) ClearReadCont() {
 }
 
 func OutputFile() {
-	output, err = os.OpenFile("xdr_check_bulk_res", os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
+	output, err = os.OpenFile("xdr_check_bulk_res", os.O_RDWR|os.O_CREATE|os.O_APPEND|os.O_TRUNC, 0666)
 	if nil != err {
 		log.Fatalln(err)
 	}
