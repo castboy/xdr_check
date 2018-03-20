@@ -27,11 +27,11 @@ type ReadHdfs struct {
 }
 
 var (
-	right  int
-	wrong  int
-	client *hdfs.Client
-	err    error
-	output *os.File
+	valid   int
+	invalid int
+	client  *hdfs.Client
+	err     error
+	output  *os.File
 )
 
 func Obj(line string) string {
@@ -62,7 +62,9 @@ func XdrCheckBulk(scanner *bufio.Scanner) {
 		obj.IsFileSizeSufficient()
 		obj.ClearReadCont()
 		obj.Output()
+		obj.Count()
 	}
+	fmt.Printf("valid: %d, invalid: %d", valid, invalid)
 }
 
 func LogParameter() *string {
@@ -101,8 +103,16 @@ func OutputFile() {
 	}
 }
 
+func (me *ReadHdfs) Count() {
+	if me.Valid {
+		valid++
+	} else {
+		invalid++
+	}
+}
+
 func (me *ReadHdfs) Output() {
-	fmt.Fprintf(output, "%+v\n", me)
+	fmt.Fprintf(output, "%+v\n", *me)
 }
 
 func (me *ReadHdfs) IsValid() {
